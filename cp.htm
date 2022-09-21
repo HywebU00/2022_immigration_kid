@@ -110,7 +110,7 @@
                             <picture>
                                 <source media="(min-width: 768px)" src="images/3_2_pic1.png">
                                 <source media="(max-width: 767px)" src="images/3_2_pic1.png">
-                                <img src="images/3_2_pic1.png" >
+                                <img src="images/3_2_pic1.png" alt="圖片說明" >
                                 <noscript><img src="images/3_2_pic1.png"></noscript>
                             </picture>
                            <!--  <span>圖說</span> -->
@@ -155,23 +155,15 @@
                         <h3>表格樣式</h3>
                         <table>
                             <tr>
-                                <th>th 1</th>
-                                <th>th 2</th>
-                                <th>th 3</th>
-                                <th>th 4</th>
-                                <th>th 5</th>
-                                <th>th 6</th>
+                                <th scope="col">th 1</th>
+                                <th scope="col">th 2</th>
+                                <th scope="col">th 3</th>
+                                <th scope="col">th 4</th>
+                                <th scope="col">th 5</th>
+                                <th scope="col">th 6</th>
                             </tr>
                             <tr>
-                                <th>th A</th>
-                                <td>td 資料</td>
-                                <td>td 資料</td>
-                                <td>td 資料</td>
-                                <td>td 資料</td>
-                                <td>td 資料</td>
-                            </tr>
-                            <tr>
-                                <th>th B</th>
+                                <th scope="row">th A</th>
                                 <td>td 資料</td>
                                 <td>td 資料</td>
                                 <td>td 資料</td>
@@ -179,7 +171,15 @@
                                 <td>td 資料</td>
                             </tr>
                             <tr>
-                                <th>th C</th>
+                                <th scope="row">th B</th>
+                                <td>td 資料</td>
+                                <td>td 資料</td>
+                                <td>td 資料</td>
+                                <td>td 資料</td>
+                                <td>td 資料</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">th C</th>
                                 <td>td 資料</td>
                                 <td>td 資料</td>
                                 <td>td 資料</td>
@@ -297,7 +297,7 @@
             <div class="container">
                 <a class="accesskey" href="#aZ" id="aZ" accesskey="Z" title="頁尾區">:::</a>
                 <div class="footer_logo">
-                    <img src="images/logo_2.png" alt="" class="img-responsive">
+                    <img src="images/logo_2.png" alt="logo" class="img-responsive">
                 </div>
                 <div class="footer_info">
                     <p> 櫃檯受理服務時間：星期一至星期五 08:00-17:00(櫃檯中午受理案件不休息)</p>
