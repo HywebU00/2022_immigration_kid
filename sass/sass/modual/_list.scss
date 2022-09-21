@@ -1,0 +1,114 @@
+.lp {
+    table {
+        td {
+            a {
+                @include aSetting_nocolor;
+            }
+            &.date {
+                text-align: center;
+                color: #666;
+                @include screen('mobile') {
+                    text-align: left;
+                }
+            }
+            &.num {
+                text-align: center;
+                color: #666;
+                @include screen('mobile') {
+                    text-align: left;
+                }
+            }
+        }
+    }
+    .list {
+        &>ul, ol {
+            list-style-type: none;
+            padding: 0;
+            border-top: 2px solid $primaryColor;
+            &>li {
+                padding: 1em 0;
+                border-bottom: 1px solid #DDD;
+                position: relative; // outline: 1px solid blue;
+                .tag {
+                    margin-left: 2em;
+                }
+                &>a {
+                    display: block;
+                    padding-left: 2em;
+                    position: relative;
+                    line-height: 1.45em;
+                    color: $color-word;
+                    &:hover {
+                        color: $aHover;
+                    }
+                    .num {
+                        width: 1.5em;
+                        text-align: right;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        &:after {
+                            content: ".";
+                            display: inline-block;
+                        }
+                    }
+                }
+                span.dept {
+                    display: inline-block;
+                    font-size: .938em;
+                    @include screen("mobile") {
+                        display: block;
+                    }
+                }
+                time {
+                    display: block;
+                    color: #AAA;
+                    font-size: .938em;
+                }
+            }
+        }
+    }
+}
+.list_photo_block {
+    margin-bottom: 20px;
+    .list_photo_group {
+        display: flex;
+        padding: 20px 0;
+        border-bottom: 1px solid #999;
+         @media(max-width: 800px) {
+            flex-wrap: wrap;
+         }
+        .image {
+            flex: 0 0 auto;
+            flex-basis: 250px;
+            max-width: 250px;
+            margin-right: 30px
+        }
+        .content {
+            flex: 1 1 auto;
+            flex-basis: calc(100% -280px);
+            .title {
+                font-size: 1.5em;
+                margin-top: 10px;
+                a {
+                    color: $color-blue;
+                    text-decoration: underline;
+                    &:hover {
+                        color: $aHover;
+                    }
+                }
+            }
+        }
+        @media(max-width: 800px) {
+            .image {
+                flex-basis: 100%;
+                max-width: 100%;
+                margin-right: 0;
+                text-align: center;
+            }
+            .content{
+                flex-basis: 100%;
+            }
+        }
+    }
+}

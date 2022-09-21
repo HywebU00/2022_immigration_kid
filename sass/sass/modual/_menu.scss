@@ -1,0 +1,213 @@
+//submenu animation
+@keyframes showMenu {
+    0% {
+        left: 20px;
+    }
+    100% {
+        left: 0px;
+    }
+}
+
+// pc版 條列menu
+.menu {
+    flex:1 1 auto;
+    flex-basis: 100%;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 99;
+    clear: both;
+    &.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        background-color: #fff;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        &:after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        &>ul {
+            width: 100%;
+            max-width: $container-max;
+            margin: 0 auto;
+        }
+    }
+    @include screen('mobile') {
+        display: none;
+    }
+    // 預設選單 ul
+    >ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        // 第一層選單樣式
+        >li {
+            flex: 0 1 15%;
+            margin: 0 3px;
+            @include screen('tablet'){
+                flex: 0 1 20%;
+            }
+            >a {
+                display: block;
+                padding: 0 .4em 0 .2em;
+                // min-height: 2.5em;
+                // font-weight: bold;
+                line-height: 2em;
+                white-space: nowrap;
+                color:#fff;
+                background-color:$color-blue;
+                border:2px solid #fff;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                border-radius:50px;
+                text-align: center;
+                font-size: 1.125em;
+                &:focus{
+                    box-shadow: 0 0px 0px 2px $aFocus ;
+                }
+            }
+            &:nth-child(2){
+                a{
+                    background-color:#9B6A05;
+                    &:hover{
+                        background-color:darken(#9B6A05, 10);
+                    }
+
+
+                }
+            }
+            &:nth-child(3){
+                a{
+                    background-color:$color-red;
+                    &:hover{
+                        background-color:darken($color-red, 10);
+                    }
+                }
+            }
+            &:nth-child(4){
+                a{
+                    background-color:$primaryColor;
+                    &:hover{
+                        background-color:darken($primaryColor, 10);
+                    }
+                }
+            }
+            &.hasChild {
+                >a {
+                    &:after {
+                        content: '';
+                        // width: 6px;
+                        // height: 6px;
+                        display: inline-block;
+                        margin-left: 0.5em;
+                        position:absolute;
+                        right:1em;
+                        top:14px;
+                        border: 4px solid #fff;
+                        transform: rotate(135deg);
+                        border-bottom-color: transparent;
+                        border-left-color:  transparent;
+                        margin-bottom: 0.2em;
+                    }
+                }
+            }
+            &:hover {
+                >a {
+                    background-color:darken($color-blue, 10);
+                    color: #fff;
+                    
+                }
+            }
+
+        }
+    }
+    ul {
+        li {
+            position: relative;
+            a {
+                display: block;
+                outline: none;
+                text-decoration: none;
+            }
+            ul {
+                display: none;
+                overflow: visible;
+                width: 99%;
+                background-color:#fff;
+                padding: 10px 15px;
+                border-radius:10px;
+                z-index: 999999;
+                position: absolute;
+                top: auto;
+                left: 0;
+                list-style: none;
+                text-align: left;
+                animation: showMenu 0.3s $cubic;
+                font-size:0.938em;
+                box-sizing:border-box;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                // 第二層選單樣式
+                li {
+                    float: none;
+                    a {
+                        padding: 0.5em 0em 0.3em;
+                        color: #333;
+                       
+                         background-color:transparent!important;
+                         border-bottom:1px solid #666;
+                         text-align: center;
+                        &:hover,
+                        &:focus {
+                            color: $aHover;
+                        }
+                    }
+                    &:last-child{
+                        a{
+                            border-bottom:none;
+                        }
+                    }
+
+                }
+                li.hasChild {
+                    >ul {
+                        z-index: 999;
+                    }
+                    >a {
+                        padding-right: 2em;
+                        &:hover,
+                        &:focus {
+                            background: $primaryColor;
+                        }
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            right: 10px;
+                            top: 1.3em;
+                            width: 6px;
+                            height: 6px;
+                            border: 2px solid #fff;
+                            transform: rotate(45deg);
+                            border-bottom: none;
+                            border-left: none;
+                        }
+                    }
+                }
+                ul {
+                    top: 0;
+                    left: 100%;
+                    animation: none;
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+}

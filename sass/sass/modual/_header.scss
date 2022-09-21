@@ -1,0 +1,404 @@
+//header
+.header {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    transition: 0.3s ease-out;
+    background-image: url('../images/header.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    height: 252px;
+    background-color: #9de4e7;
+    @extend %clearfix;
+    @include screen('mobile') {
+        position: fixed;
+        width: 100%;
+         background-color:transparent;
+    }
+    &:before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+        @include screen('mobile') {
+            height: 252px;
+        }
+    }
+    // mobile btn for extend
+    %mobileCtrlBtn {
+        width: 46px !important;
+        height: 46px !important;
+        position: absolute;
+        top: 0px;
+        display: block;
+        font-size: 0em;
+        padding: 10px 5px;
+        margin: 0;
+        min-width: auto;
+        min-height: auto;
+        background-color:#6e992c;
+        border: none;
+        box-shadow: none;
+        box-sizing: border-box;
+        border-radius:5px;
+        @include screen('mobile') {
+            display: block !important;
+        }
+    }
+    >.container {
+        max-width: $container-max;
+        overflow: visible;
+        position: relative; // menu
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        .sidebarCtrl {
+            display: none;
+            right:8px;
+            top:10px;
+            @extend %mobileCtrlBtn;
+            span {
+                position: absolute;
+                background: #fff;
+                width: 55%;
+                height: 3px;
+                top: 14px;
+                left: 50%;
+                margin-left: -28%;
+                display: block;
+                border-radius: 2px;
+              box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+                &:nth-child(2) {
+                    top: 22px;
+                }
+                &:nth-child(3) {
+                    top: 30px;
+                }
+            }
+        }
+        // search
+        .searchCtrl {
+            display: none;
+            right: 0px;
+            font-size: 0em;
+            @extend %mobileCtrlBtn;
+            &:before {
+                width: 40px;
+                height: 40px;
+                background: url(../images/basic/icon_search.png) no-repeat center center;
+                background-size: 28px;
+                opacity: 0.6;
+                content: '';
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                display: block;
+            }
+        }
+    }
+    h1 {
+        flex: 0 0 auto;
+        flex-basis: 416px;
+        max-width: 416px;
+        // width: 416px;
+        // height: 75px;
+        margin: .5em 0;
+        padding: 2px 2px 2px 20px;
+        box-sizing: border-box;
+        a {
+            display: inline-block;
+        }
+        img {
+            display: block;
+            max-width: 416px;
+            // max-height: 75px;
+        }
+        @include screen('mobile') {
+            padding: 2px 60px 2px 20px;
+            flex-basis: 100%;
+            max-width: 100%;
+            text-align: center;
+            // height: 60px;
+            img {
+                width: auto;
+                height: auto;
+                // max-height: 54px;
+                margin: 0px auto;
+                transform: scale(0.8);
+            }
+        }
+        @media(max-width: 420px) {
+            img {
+                max-width: 100%;
+                width: 100%;
+                transform: scale(1);
+            }
+        }
+    }
+    // 導覽列
+    .navigation {
+        flex: 1 1 auto;
+        flex-basis: calc(100% - 416px);
+        @extend %clearfix;
+        box-sizing: border-box;
+        display: flex;
+        @include screen('mobile') {
+            flex-basis: 100%;
+        }
+        .navlist {
+            flex: 1 1 auto;
+            margin: 0em 0.5em 0 0;
+            @include screen('mobile'){
+                 margin: 0em 1em ;
+            }
+            ul {
+                padding: 0;
+                margin: 0;
+                font-size: 0.938em;
+                list-style: none;
+                display: flex;
+                justify-content: flex-end;
+                @include screen('mobile') {
+                    justify-content: center;
+                }
+                @media(max-width: 380px){
+                    flex-wrap: wrap;
+                }
+            }
+            li {
+                flex: 0 0 auto;
+                margin: 0 3px 8px;
+                a {
+                    display: block;
+                    padding: 0.2em 0.5em;
+                    text-decoration: none;
+                    @include aSetting_nocolor;
+                    background-color: #fff;
+                    color: $secondaryColor;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    border-radius: 5px;
+                    letter-spacing: 0.05em;
+                    &:focus {
+                        box-shadow: 0 0px 0px 2px $aFocus;
+                    }
+                }
+            }
+        }
+    }
+}
+//search
+.search {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    vertical-align: top;
+    font-size: 0.938em;
+    margin: 1em 0.5em;
+    box-sizing: border-box;
+    @include screen('mobile') {
+        display: none;
+    }
+    label {
+        font-size: 0em;
+    }
+    .form_grp {
+        flex: 0 0 auto;
+        margin: 0;
+        input {
+            margin: 0 0 0 0.5em;
+            padding: 0.25em 0.5em;
+            box-shadow: none;
+            width: auto;
+            &[type='submit'] {
+                min-width: auto;
+                padding: 0.2em 0.8em;
+            }
+            &:focus {
+                box-shadow: 0 0px 0px 2px $aFocus;
+            }
+        }
+        button,
+        .btn,
+        .btn-search {
+            min-width: auto;
+            padding: 0.2em 0.8em;
+            margin: 0;
+            &:hover,
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+    }
+    .btn_grp {
+        flex: 0 0 auto;
+        padding: 0 0.5em 0;
+        margin: 0;
+        button,
+        .btn,
+        .btn-search {
+            min-width: auto;
+            padding: 0.2em 0.8em;
+            margin: 0;
+            &:hover,
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+    }
+    .keywordHot {
+        flex: 1 1 100%;
+        ul {
+            font-size: 0.813em;
+            line-height: 1.65em;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            list-style-type: none;
+            &:before {}
+            li {
+                margin: 0;
+                padding: 0.5em;
+                flex: 0 0 auto;
+            }
+            a {
+                @include aSetting_nocolor;
+            }
+        }
+    }
+}
+// m_search
+.m_search {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: auto;
+    padding: 0.8em 0.3em;
+    display: block;
+    height: auto;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: 98;
+    background: #333;
+    display: none;
+    margin: 0;
+    label {
+        font-size: 0em;
+        line-height: 0;
+    }
+    .form_grp {
+        display: flex;
+        align-items: center;
+        label {
+            display: none;
+            flex: 0 0 0%;
+        }
+        input {
+            margin: 0.5em;
+            padding: 0.5em;
+            flex: 1 1 50%;
+            max-width: 70%;
+            &[type='submit'] {
+                flex: 0 1 15%;
+                margin: 0.5em;
+            }
+        }
+        .btn,
+        .btn-search {
+            min-width: auto;
+            padding: 0.5em 0.8em;
+            margin: 0;
+            flex: 1 1 20%;
+            max-width: 25%;
+            &:hover,
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+    }
+    .btn_grp {
+        flex: 1 1 auto;
+        padding: 0.25em 0.5em;
+        border-bottom: solid 1px #444;
+        box-sizing: border-box;
+        text-align: right;
+        .btn {
+            width: auto !important;
+            padding: 0.2em 0.5em !important;
+            margin: 0;
+            background: transparent;
+            font-size: 0.875rem;
+            color: #ddd;
+            border: none;
+            &:hover,
+            &:focus {
+                color: lighten($aHover, 10);
+            }
+        }
+    }
+    .keywordHot {
+        flex: 1 1 100%;
+        ul {
+            font-size: 0.875em;
+            line-height: 1.65em;
+            margin: 0;
+            padding: 0.5em 0 0 0.5em;
+            display: flex;
+            justify-content: flex-start;
+            list-style-type: none;
+            &:before {}
+            li {
+                margin: 0;
+                padding: 0.5em;
+                flex: 0 0 auto;
+            }
+            a {
+                color: #fff;
+                &:hover,
+                &:focus {
+                    color: lighten($aHover, 10);
+                }
+            }
+        }
+    }
+}
+// header fix
+// .header.fixed {
+//     position: fixed;
+//     width: 100%;
+//     right: 0;
+//     top: 0;
+//     box-shadow: rgba(0, 0, 0, 0.5) 0 0 25px;
+//     background: rgba(0, 0, 0, 0.75);
+//     z-index: 999;
+//     &:before {
+//         background: rgba(0, 0, 0, 0.35);
+//     }
+//     @include screen('mobile') {
+//         background: #fff;
+//     }
+//     .menu {
+//         > ul {
+//             > li {
+//                 > a {
+//                     color: #fff;
+//                 }
+//             }
+//         }
+//     }
+//     .megamenu {
+//         > ul {
+//             > li {
+//                 > a {
+//                     color: #fff;
+//                 }
+//             }
+//         }
+//     }
+// }
